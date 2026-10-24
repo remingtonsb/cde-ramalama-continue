@@ -1,3 +1,25 @@
+schemaVersion: 2.2.0
+metadata:
+  generateName: cde-ramalama-continue
+attributes:
+  controller.devfile.io/storage-type: ephemeral
+projects:
+  - name: cde-ramalama-continue
+    git:
+      remotes:
+        origin: 'https://github.com/redhat-developer-demos/cde-ramalama-continue'
+      checkoutFrom:
+        revision: master
+components:
+  - name: udi
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      memoryLimit: 4Gi
+      memoryRequest: 2Gi
+      cpuLimit: 4000m
+      cpuRequest: 1000m
+      mountSources: true
+      sourceMapping: /projects
   - name: ramalama
     attributes:
       container-overrides:
@@ -25,3 +47,14 @@
           name: ramalamaserve
           protocol: http
           targetPort: 8080
+  - name: ramalama-models
+    volume:
+      size: 5Gi
+ccommands:
+  - id: copyconfig
+    exec:
+      component: udi
+      commandLine: "mkdir -p /home/user/.continue && cp /projects/cde-ramalama-continue/continue-config.yaml /home/user/.continue/config.yaml"
+events:
+  postStart:
+    - copyconfig
