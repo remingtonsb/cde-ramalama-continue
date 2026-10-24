@@ -30,7 +30,7 @@ components:
           requests:
             cpu: 1000m
             memory: 4Gi
-container:
+    container:
       image: quay.io/ramalama/ramalama:latest
       args:
         - "ramalama"
