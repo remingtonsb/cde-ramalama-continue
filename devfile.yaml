@@ -30,15 +30,19 @@ components:
           requests:
             cpu: 1000m
             memory: 4Gi
-    container:
-      image: quay.io/ramalama/ramalama:latest      # era :0.7
+container:
+      image: quay.io/ramalama/ramalama:latest
       args:
         - "ramalama"
+        - "--nocontainer"
         - "--store"
         - "/models"
         - "serve"
-        - "--network=none"
-        - "ollama://gemma3:4b"                     # era granite-code:latest
+        - "--host"
+        - "0.0.0.0"
+        - "--port"
+        - "8080"
+        - "ollama://gemma3:4b"
       volumeMounts:
         - name: ramalama-models
           path: /models
