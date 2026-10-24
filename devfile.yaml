@@ -7,7 +7,7 @@ projects:
   - name: cde-ramalama-continue
     git:
       remotes:
-        origin: 'https://github.com/redhat-developer-demos/cde-ramalama-continue'
+        origin: 'https://github.com/remingtonsb/cde-ramalama-continue'
       checkoutFrom:
         revision: master
 components:
