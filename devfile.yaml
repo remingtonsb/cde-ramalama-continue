@@ -50,7 +50,7 @@ components:
   - name: ramalama-models
     volume:
       size: 5Gi
-ccommands:
+commands:
   - id: copyconfig
     exec:
       component: udi
