@@ -45,7 +45,7 @@ components:
         - "0.0.0.0"
         - "--port"
         - "8080"
-        - "ollama://gemma3:4b"
+        - "ollama://qwen2.5-coder:3b"
       volumeMounts:
         - name: ramalama-models
           path: /models
