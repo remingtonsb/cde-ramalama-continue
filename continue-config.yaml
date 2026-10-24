@@ -1,18 +1,28 @@
 name: Local Assistant
 version: 1.0.0
 schema: v1
+
 models:
-  - name: Gemma 3 4B          # era "Llama CPP"
+  - name: Qwen2.5-Coder 3B
     provider: llama.cpp
     model: default
     apiBase: http://localhost:8080
+    roles:
+      - chat
+      - edit
+      - apply
+      - autocomplete
+    defaultCompletionOptions:
+      temperature: 0.2
 
-tabAutocompleteModel:
-  title: "RamaLama (AutoComplete)"
-  provider: "custom"
-  model: "default"
+rules:
+  - Responda sempre em português do Brasil.
+  - Gere código Python completo e executável, com bloco if __name__ == "__main__".
+  - Garanta que o formato de entrada pedido ao usuário seja o mesmo usado no parsing.
+  - Inclua exemplos de entrada válida e inválida em comentários.
 
 allowAnonymousTelemetry: false
+
 context:
   - provider: code
   - provider: docs
