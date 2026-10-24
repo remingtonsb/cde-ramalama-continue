@@ -2,7 +2,7 @@ name: Local Assistant
 version: 1.0.0
 schema: v1
 models:
-  - name: Llama CPP
+  - name: Gemma 3 4B          # era "Llama CPP"
     provider: llama.cpp
     model: default
     apiBase: http://localhost:8080
